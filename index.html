@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fjolla Sadikaj | Cloud & DevOps Engineer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Cloud & DevOps engineer focused on reliable infrastructure, automation, and modern cloud platforms."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #070b1f;
+      --card-bg: rgba(15, 23, 42, 0.9);
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.18);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.35);
+      --radius-lg: 1.5rem;
+      --radius-md: 0.9rem;
+      --shadow-soft: 0 18px 60px rgba(15, 23, 42, 0.75);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #0f172a, #020617 45%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .shell {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.25rem 1.25rem 3rem;
+    }
+
+    /* Header / Nav */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(2, 6, 23, 0.9),
+        rgba(2, 6, 23, 0.65),
+        transparent
+      );
+      border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 1.25rem;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #e0f2fe, #38bdf8, #0f172a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #e5f0ff;
+      box-shadow: 0 10px 30px rgba(56, 189, 248, 0.4);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-size: 0.98rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .brand-role {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+
+    .nav-link {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      position: relative;
+      padding-bottom: 0.2rem;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(to right, #38bdf8, #22c55e);
+      border-radius: 999px;
+      transition: width 0.18s ease-out;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 80%;
+    }
+
+    .nav-toggle {
+      display: none;
+      border: none;
+      background: transparent;
+      color: var(--text-main);
+      font-size: 1.25rem;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    main {
+      flex: 1;
+    }
+
+    .hero {
+      padding-top: 2.8rem;
+      padding-bottom: 3.5rem;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.18rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-eyebrow-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #4ade80, #16a34a);
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.85);
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 3vw, 3rem);
+      letter-spacing: -0.04em;
+      margin-bottom: 0.85rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(to right, #38bdf8, #22c55e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      max-width: 34rem;
+      color: var(--text-muted);
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .tag {
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.7rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out,
+        background 0.15s ease-out, border-color 0.15s ease-out;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at top left, #e0f2fe, #38bdf8);
+      color: #020617;
+      box-shadow: 0 12px 40px rgba(56, 189, 248, 0.55);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 55px rgba(56, 189, 248, 0.75);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.85);
+      border-color: rgba(148, 163, 184, 0.55);
+      color: var(--text-main);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 0.95);
+      transform: translateY(-1px);
+    }
+
+    .btn-icon {
+      font-size: 1.05rem;
+    }
+
+    .hero-note {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.6rem;
+    }
+
+    .hero-right {
+      position: relative;
+    }
+
+    .hero-orbit {
+      position: relative;
+      border-radius: 999px;
+      padding: 0.25rem;
+      background: radial-gradient(circle at top left, #0b1120, #020617);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-orbit-inner {
+      border-radius: 999px;
+      background: radial-gradient(circle at 10% 0, #0b1120, #020617 65%);
+      border: 1px solid rgba(15, 23, 42, 0.9);
+      padding: 1.4rem 1.4rem 1.25rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-orbit-inner::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.15), transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(34, 197, 94, 0.14), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .orbit-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .orbit-title {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .orbit-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      padding: 0.18rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    .orbit-status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #4ade80, #16a34a);
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.85);
+    }
+
+    .orbit-main {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .orbit-role {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .orbit-company {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .orbit-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.85rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .orbit-badge {
+      border-radius: 999px;
+      padding: 0.2rem 0.6rem;
+      background: rgba(56, 189, 248, 0.16);
+      color: #e0f2fe;
+      border: 1px solid rgba(56, 189, 248, 0.6);
+    }
+
+    .orbit-metrics {
+      display: flex;
+      gap: 0.6rem;
+    }
+
+    .metric-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .metric-value {
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    /* Sections */
+    section {
+      padding: 2.4rem 0 0;
+    }
+
+    .section-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1.4rem;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      background: var(--card-bg);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      padding: 1.2rem 1.25rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .muted {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    /* Experience */
+    .timeline {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 0.85rem;
+      align-items: flex-start;
+    }
+
+    .timeline-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      margin-top: 0.35rem;
+      background: linear-gradient(to bottom, #38bdf8, #22c55e);
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.75);
+    }
+
+    .timeline-body {
+      border-left: 1px dashed rgba(148, 163, 184, 0.5);
+      padding-left: 0.85rem;
+      padding-bottom: 0.6rem;
+    }
+
+    .timeline-role {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .timeline-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .timeline-desc {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+      max-width: 40rem;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+      gap: 1.8rem;
+    }
+
+    .contact-label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .contact-value {
+      font-size: 0.9rem;
+    }
+
+    .social-pill {
+      font-size: 0.82rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.95);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    footer {
+      padding: 2rem 1.25rem 1.8rem;
+      border-top: 1px solid rgba(148, 163, 184, 0.4);
+      margin-top: 3rem;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- Header -->
+    <header>
+      <div class="header-inner">
+        <a href="#top" class="brand">
+          <div class="brand-badge">F.S</div>
+          <div class="brand-text">
+            <span class="brand-name">Fjolla Sadikaj</span>
+            <span class="brand-role">Cloud &amp; DevOps Engineer</span>
+          </div>
+        </a>
+
+        <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+
+        <nav>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#experience" class="nav-link">Experience</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main id="top">
+      <div class="shell">
+
+        <!-- Hero -->
+        <section class="hero">
+          <div>
+            <div class="hero-eyebrow">
+              <span class="hero-eyebrow-dot"></span>
+              <span>Available for remote &amp; hybrid roles</span>
+            </div>
+
+            <h1 class="hero-title">
+              Cloud &amp; <span>DevOps</span> engineer building reliable systems.
+            </h1>
+
+            <p class="hero-subtitle">
+              I design, deploy, and maintain scalable infrastructure on modern cloud platforms.
+              My focus is automation, platform reliability, and creating high-quality engineering workflows.
+            </p>
+
+            <div class="hero-tags">
+              <span class="tag">Kubernetes</span>
+              <span class="tag">CI/CD</span>
+              <span class="tag">Infrastructure as Code</span>
+              <span class="tag">Observability</span>
+            </div>
+
+            <div class="hero-actions">
+              <a href="#contact" class="btn btn-primary">✉️ Contact me</a>
+            </div>
+
+            <p class="hero-note">
+              Based in <strong>Prishtina, Kosova</strong> · working globally.
+            </p>
+          </div>
+
+          <div class="hero-right">
+            <div class="hero-orbit">
+              <div class="hero-orbit-inner">
+
+                <div class="orbit-header">
+                  <span class="orbit-title">Current Mode</span>
+                  <span class="orbit-status">
+                    <span class="orbit-status-dot"></span>
+                    <span>Online</span>
+                  </span>
+                </div>
+
+                <div class="orbit-main">
+                  <div>
+                    <div class="orbit-role">Cloud / DevOps Engineer</div>
+                    <div class="orbit-company">
+                      Experience across Fjolla-impex, EBTCO, LinkPlus, Frakton, Kin + Carta &amp; Valtech.
+                    </div>
+                  </div>
+
+                  <div class="orbit-footer">
+                    <span class="orbit-badge">Cloud native · SRE mindset</span>
+                    <div class="orbit-metrics">
+                      <div>
+                        <div class="metric-label">Experience</div>
+                        <div class="metric-value">6+ yrs</div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- About -->
+        <section id="about">
+          <p class="section-label">About</p>
+          <div class="section-grid">
+            <div>
+              <h2 class="section-title">
+                I care about automation, clean infrastructure and reliable systems.
+              </h2>
+              <p class="muted">
+                I’m a Cloud &amp; DevOps engineer with 6+ years of experience building scalable environments,
+                implementing CI/CD workflows, and enabling engineering teams to ship confidently.
+              </p>
+              <br />
+              <p class="muted">
+                My work spans cloud infrastructure, platform engineering, container orchestration,
+                incident response practices, and bringing structure to complex environments.
+              </p>
+            </div>
+
+            <div class="card">
+              <h3>Companies I've worked with</h3>
+              <ul class="muted" style="margin-top: 0.7rem; padding-left: 1rem;">
+                <li>Fjolla-impex</li>
+                <li>EBTCO</li>
+                <li>LinkPlus</li>
+                <li>Frakton</li>
+                <li>Kin + Carta</li>
+                <li>Valtech</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills">
+          <p class="section-label">Skills</p>
+          <h2 class="section-title">Technologies I work with.</h2>
+
+          <div class="section-grid">
+
+            <div class="card">
+              <h3>Cloud</h3>
+              <p class="muted">AWS · Azure · GCP · Networking · Serverless · Managed services</p>
+            </div>
+
+            <div class="card">
+              <h3>DevOps & Infrastructure</h3>
+              <p class="muted">Kubernetes · Docker · Terraform · Helm · GitOps · Automation</p>
+            </div>
+
+            <div class="card">
+              <h3>CI/CD & Automation</h3>
+              <p class="muted">GitHub Actions · GitLab CI · Jenkins · Argo CD</p>
+            </div>
+
+            <div class="card">
+              <h3>Observability</h3>
+              <p class="muted">Prometheus · Grafana · Logging pipelines · Alerting · SLOs</p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience">
+          <p class="section-label">Experience</p>
+          <h2 class="section-title">Professional background.</h2>
+
+          <div class="timeline">
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-body">
+                <div class="timeline-role">Senior Cloud / DevOps Engineer</div>
+                <div class="timeline-meta">2022 — Present · Valtech</div>
+                <div class="timeline-desc">
+                  Designing cloud-native platforms, improving CI/CD automation, and enabling scalable engineering teams.
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-body">
+                <div class="timeline-role">DevOps Engineer</div>
+                <div class="timeline-meta">2021 — 2022 · Kin + Carta</div>
+                <div class="timeline-desc">
+                  Built CI/CD pipelines, Kubernetes deployments and automated infrastructure provisioning.
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-body">
+                <div class="timeline-role">Platform / DevOps Engineer</div>
+                <div class="timeline-meta">2020 — 2021 · Frakton</div>
+                <div class="timeline-desc">
+                  Focused on cloud migrations, IaC, automation, and improving deployment workflows.
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-body">
+                <div class="timeline-role">IT & Engineering Roles</div>
+                <div class="timeline-meta">2016 — 2020 · Fjolla-impex, EBTCO, LinkPlus</div>
+                <div class="timeline-desc">
+                  Early-career roles in engineering, IT operations, and technical project work.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects">
+          <p class="section-label">Projects</p>
+          <h2 class="section-title">Selected work.</h2>
+
+          <div class="section-grid">
+
+            <div class="card">
+              <h3>Cloud-Native Infrastructure</h3>
+              <p class="muted">
+                Designed Kubernetes and IaC environments supporting scalable and reliable applications.
+              </p>
+            </div>
+
+            <div class="card">
+              <h3>CI/CD Automation</h3>
+              <p class="muted">
+                Built automated pipelines reducing deployment time and increasing development velocity.
+              </p>
+            </div>
+
+            <div class="card">
+              <h3>Observability Foundations</h3>
+              <p class="muted">
+                Delivered monitoring, logging and alerting structures improving incident response.
+              </p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+          <p class="section-label">Contact</p>
+          <h2 class="section-title">Let’s connect.</h2>
+
+          <div class="contact-grid">
+            <div>
+              <p class="muted">
+                The best way to reach me is email or LinkedIn.
+              </p>
+
+              <div style="margin-top: 1.1rem;">
+                <div>
+                  <div class="contact-label">Email</div>
+                  <div class="contact-value">
+                    <a href="mailto:sadikajf1@gmail.com">sadikajf1@gmail.com</a>
+                  </div>
+                </div>
+
+                <br />
+
+                <div>
+                  <div class="contact-label">Location</div>
+                  <div class="contact-value">Prishtina, Kosova</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>LinkedIn</h3>
+              <p class="muted">Find me on LinkedIn for work opportunities.</p>
+              <a
+                href="https://www.linkedin.com/in/fjolla-sadikaj"
+                target="_blank"
+                class="social-pill"
+              >
+                💼 fjolla-sadikaj
+              </a>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="shell">
+        <div>© <span id="year"></span> Fjolla Sadikaj</div>
+        <div>Built with clean HTML &amp; CSS · Hosted on Cloudflare Pages.</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
